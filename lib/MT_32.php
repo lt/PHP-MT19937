@@ -1,8 +1,8 @@
 <?php
 
-namespace MT;
+namespace MersenneTwister;
 
-abstract class MT19937AR_32 implements PRNG
+abstract class MT_32
 {
     private $state = [];
     private $index = 625;

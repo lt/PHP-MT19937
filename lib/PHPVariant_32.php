@@ -1,8 +1,8 @@
 <?php
 
-namespace MT;
+namespace MersenneTwister;
 
-abstract class MT19937PHP_32 extends MT19937AR_32
+abstract class PHPVariant_32 extends MT_32
 {
     protected function twist($m, $u, $v)
     {

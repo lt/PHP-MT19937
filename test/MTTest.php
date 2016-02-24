@@ -1,17 +1,17 @@
 <?php
 
-namespace MT;
+namespace MersenneTwister;
 
-class AR64 extends MT19937AR_64 {}
-class AR32 extends MT19937AR_32 {}
+class MTTest64 extends MT_64 {}
+class MTTest32 extends MT_32 {}
 
-class MT19937ARTest extends \PHPUnit_Framework_TestCase
+class MTTest extends \PHPUnit_Framework_TestCase
 {
     function implementationProvider()
     {
-        $impl = [[new AR32]];
+        $impl = [[new MTTest32]];
         if (PHP_INT_SIZE > 4) {
-            $impl[] = [new AR64];
+            $impl[] = [new MTTest64];
         }
         return $impl;
     }
@@ -19,7 +19,7 @@ class MT19937ARTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider implementationProvider
      */
-    function testOutput(PRNG $mt)
+    function testOutput($mt)
     {
         $expected = [
              527860569, 1711027313, 1280820687,  688176834,  770499160,  412773096,  813703253,  898651287,

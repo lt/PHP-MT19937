@@ -1,16 +1,16 @@
 <?php
-namespace MT;
+namespace MersenneTwister;
 
-class PHP64 extends MT19937PHP_64 {}
-class PHP32 extends MT19937PHP_32 {}
+class PHPVariant64 extends PHPVariant_64 {}
+class PHPVariant32 extends PHPVariant_32 {}
 
-class MT19937PHPTest extends \PHPUnit_Framework_TestCase
+class PHPVariantTest extends \PHPUnit_Framework_TestCase
 {
     function implementationProvider()
     {
-        $impl = [[new PHP32]];
+        $impl = [[new PHPVariant32]];
         if (PHP_INT_SIZE > 4) {
-            $impl[] = [new PHP64];
+            $impl[] = [new PHPVariant64];
         }
         return $impl;
     }
@@ -18,7 +18,7 @@ class MT19937PHPTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider implementationProvider
      */
-    function testOutput(PRNG $mt)
+    function testOutput($mt)
     {
         $expected = [
             1614640687, 1711027313,  857485497,  688176834, 1386682158,  412773096,  813703253,  898651287,

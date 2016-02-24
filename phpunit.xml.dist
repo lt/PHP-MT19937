@@ -12,7 +12,7 @@
          stopOnSkipped="false"
          bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite name="mt_rand_compat tests">
+        <testsuite name="Mersenne Twister Tests">
             <directory>test</directory>
         </testsuite>
     </testsuites>
