@@ -18,7 +18,7 @@ abstract class MT_32
             $int0 ^= $int1 >> 14;
 
             $tmp = ($carry = (0x8965 * $int0) + $i) & 0xffff;
-            $int1 = (0x8965 * $int1) + (0x6C07 * $int0) + ($carry >> 16) & 0xffff;
+            $int1 = ((0x8965 * $int1) & 0xffff) + ((0x6C07 * $int0) & 0xffff) + ($carry >> 16) & 0xffff;
             $int0 = $tmp;
 
             $state[$i] = [$int0, $int1];
