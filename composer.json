@@ -1,0 +1,30 @@
+{
+  "name": "leigh/mt_rand_compat",
+  "homepage": "https://github.com/lt/mt_rand_compat",
+  "description": "PHP implementation of the MT19937 algorithm",
+  "authors": [
+    {
+      "name": "Leigh T",
+      "homepage": "https://github.com/lt"
+    }
+  ],
+  "keywords": [
+    "mersenne",
+    "twister",
+    "prng",
+    "rng",
+    "random"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MT\\": "lib"
+    }
+  }
+}
