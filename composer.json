@@ -1,6 +1,6 @@
 {
-  "name": "leigh/mt_rand_compat",
-  "homepage": "https://github.com/lt/mt_rand_compat",
+  "name": "leigh/mt-rand",
+  "homepage": "https://github.com/lt/PHP-MT19937",
   "description": "PHP implementation of the MT19937 algorithm",
   "authors": [
     {
