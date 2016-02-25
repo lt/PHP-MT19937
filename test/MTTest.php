@@ -2,25 +2,12 @@
 
 namespace MersenneTwister;
 
-class MTTest64 extends MT_64 {}
-class MTTest32 extends MT_32 {}
-
 class MTTest extends \PHPUnit_Framework_TestCase
 {
-    function implementationProvider()
+    function testOutput()
     {
-        $impl = [[new MTTest32]];
-        if (PHP_INT_SIZE > 4) {
-            $impl[] = [new MTTest64];
-        }
-        return $impl;
-    }
-    
-    /**
-     * @dataProvider implementationProvider
-     */
-    function testOutput($mt)
-    {
+        $mt = new MT;
+
         $expected = [
              527860569, 1711027313, 1280820687,  688176834,  770499160,  412773096,  813703253,  898651287,
               52508912,  757323740,  511765911,  274407457,  833082629, 1923803667, 1461450755, 1301698200,

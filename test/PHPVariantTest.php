@@ -1,25 +1,12 @@
 <?php
 namespace MersenneTwister;
 
-class PHPVariant64 extends PHPVariant_64 {}
-class PHPVariant32 extends PHPVariant_32 {}
-
 class PHPVariantTest extends \PHPUnit_Framework_TestCase
 {
-    function implementationProvider()
+    function testOutput()
     {
-        $impl = [[new PHPVariant32]];
-        if (PHP_INT_SIZE > 4) {
-            $impl[] = [new PHPVariant64];
-        }
-        return $impl;
-    }
-
-    /**
-     * @dataProvider implementationProvider
-     */
-    function testOutput($mt)
-    {
+        $mt = new PHPVariant;
+        
         $expected = [
             1614640687, 1711027313,  857485497,  688176834, 1386682158,  412773096,  813703253,  898651287,
             2087374214, 1382556330, 1640700129, 1863374167, 1324097651, 1923803667,  676334965,  853386222,
