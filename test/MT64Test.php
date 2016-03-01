@@ -4,6 +4,13 @@ namespace MersenneTwister;
 
 class MT64Test extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        if (PHP_INT_SIZE === 4) {
+            $this->markTestSkipped('Tests require 64-bit version of PHP');
+        }
+    }
+
     function testOutput()
     {
         $mt = new MT64;
