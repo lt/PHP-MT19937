@@ -13,15 +13,15 @@ class MT
 
         $int0 = $seed & 0xffff;
         $int1 = ($seed >> 16) & 0xffff;
-        
+
         for ($i = 1; $i < 624; $i++) {
             // This is a 32-bit safe version of:
             // $state[$i] = (1812433253 * ($state[$i - 1] ^ ($state[$i - 1] >> 30)) + $i) & 0xffffffff;
             $int0 ^= $int1 >> 14;
 
-            $tmp = ($carry = (0x8965 * $int0) + $i) & 0xffff;
-            $int1 = ((0x8965 * $int1) & 0xffff) + ((0x6C07 * $int0) & 0xffff) + ($carry >> 16) & 0xffff;
-            $int0 = $tmp;
+            $carry = (0x8965 * $int0) + $i;
+            $int1 = ((0x8965 * $int1) + (0x6C07 * $int0) + ($carry >> 16)) & 0xffff;
+            $int0 = $carry & 0xffff;
 
             $state[$i] = ($int1 << 16) | $int0;
         }

@@ -19,11 +19,11 @@ class MT64
             // $state[$i] = (6364136223846793005 * ($state[$i - 1] ^ ($state[$i - 1] >> 62)) + $i);
             $int0 ^= $int1 >> 30;
 
-            $tmp = ($carry = (0x4c957f2d * $int0) + $i) & 0xffffffff;
+            $carry = (0x4c957f2d * $int0) + $i;
             $int1 = ((0x4c957f2d * $int1) & 0xffffffff) +
                     ((0x5851f42d * $int0) & 0xffffffff) +
                     ($carry >> 32) & 0xffffffff;
-            $int0 = $tmp;
+            $int0 = $carry & 0xffffffff;
 
             $state[$i] = ($int1 << 32) | $int0;
         }
@@ -34,6 +34,7 @@ class MT64
 
     protected function twist($m, $u, $v)
     {
+        // -2147483648 is 0xffffffff80000000 without promotion to double (52-bit precision)
         $y = ($u & -2147483648) | ($v & 0x7fffffff);
         return $m ^ (($y >> 1) & 0x7fffffffffffffff) ^ (-5403634167711393303 * ($v & 1));
     }
@@ -62,7 +63,7 @@ class MT64
 
         $y ^= ($y >> 29) & 0x0000000555555555;
         $y ^= ($y << 17) & 0x71d67fffeda60000;
-        $y ^= ($y << 37) &  -2270628950310912;
+        $y ^= ($y << 37) &  -2270628950310912; // 0xfff7eee000000000 without promotion to double
         $y ^= ($y >> 43) & 0x00000000001fffff;
 
         return $y;
