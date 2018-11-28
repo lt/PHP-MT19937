@@ -33,12 +33,12 @@ $mt->int64();    // int64() per mt19937-64.c, high bit sets sign
 
 ### `MersenneTwister\PHPVariant`
 
-This is the Mersenne Twister algorithm as defined in PHP 5.2.1+. It is slightly different from the original algorithm and outputs a different set of numbers
+This is the Mersenne Twister algorithm as defined in PHP 5.2.1+. It is slightly different from the original algorithm and outputs a different set of numbers.
 
 It works on both 32 and 64 bit builds of PHP and outputs 32 bit integers.
 
 ```php
-$mt = new \MersenneTwister\MT();
+$mt = new \MersenneTwister\PHPVariant();
 $mt->init(1234);     // mt_srand(1234);
 $mt->int31();        // mt_rand();
 
